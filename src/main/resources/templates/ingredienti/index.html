@@ -10,7 +10,7 @@
     <div class="container">
     <div class="row py-4">
         <div class="col-5">
-            <form th:action="@{/ingredienti/create}" method="post" id="ingredient-form" th:object="${ing}">
+            <form th:action="@{/ingredienti/create}" method="post" id="ingredient-form" th:object="${ing}"  sec:authorize="hasAuthority('ADMIN')">
                 <div class="input-group">
                     <div class="form-floating">
                         <input th:field="*{ingredient}" type="text" class="form-control" id="ingredient" placeholder="Nome ingrendiente" th:errorClass="is-invalid">
@@ -41,7 +41,7 @@
                             <td th:text="${ingredient.ingredient}"></td>
                             <td th:text="${ingredient.pizze.size()}"></td>
                             <td>
-                                <form th:action="@{'/ingredienti/delete/{id}'(id=${ingredient.id})}" method="post" id="delete-form">
+                                <form th:action="@{'/ingredienti/delete/{id}'(id=${ingredient.id})}" method="post" id="delete-form" sec:authorize="hasAuthority('ADMIN')">
                                     <button class="btn btn-danger" type="submit" id="submitButton" onclick="return confirm('Sei sicuro di voler proseguire?')"><i class="fa-solid fa-trash"></i></button>
                                 </form>
                             </td>

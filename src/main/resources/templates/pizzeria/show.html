@@ -51,7 +51,7 @@
                             <td th:text="${deal.endDate}"></td>
                             <td th:text="${deal.formattedPrice}"></td>
                             <td>
-                                <a class="btn btn-primary" th:href="@{|/deals/edit/${deal.id}|}"><i class="fa-solid fa-edit"></i></a>
+                                <a class="btn btn-primary" th:href="@{|/deals/edit/${deal.id}|}" sec:authorize="hasAuthority('ADMIN')"><i class="fa-solid fa-edit"></i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -62,8 +62,8 @@
             </div>
             <hr>
             <div class="col-12">
-                <a class="btn btn-success" th:href="@{|/pizzeria/edit/${pizza.id}|}"><i class="fa-solid fa-pen-to-square"></i> MODIFICA PIZZA</a>
-                <a class="btn btn-warning" th:href="@{/pizzeria/{id}/deals (id=${pizza.id})}"><i class="fa-solid fa-plus"></i> AGGIUNGI OFFERTA</a>
+                <a class="btn btn-success" th:href="@{|/pizzeria/edit/${pizza.id}|}" sec:authorize="hasAuthority('ADMIN')"><i class="fa-solid fa-pen-to-square"></i> MODIFICA PIZZA</a>
+                <a class="btn btn-warning" th:href="@{/pizzeria/{id}/deals (id=${pizza.id})}" sec:authorize="hasAuthority('ADMIN')"><i class="fa-solid fa-plus"></i> AGGIUNGI OFFERTA</a>
             </div>
         </div>
     </div>
